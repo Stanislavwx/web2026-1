@@ -1,0 +1,12 @@
+services:
+  app:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./:/app:Z
+    command: >
+      sh -lc "
+        apk add --no-cache git &&
+        git config --global --add safe.directory /app &&
+        node index.js
+      "
